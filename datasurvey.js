@@ -1,0 +1,37 @@
+// buat ngirim semua yg uda jadi satu ke google spreedsheet
+const submit = document.getElementById('submit');
+submit.addEventListener('click', function(e){
+    e.preventDefault();
+
+    function ambilJawaban(nama) {
+        const opsi = document.querySelector(`input[name="${nama}"]:checked`);
+        return opsi ? opsi.nextSibling.textContent.trim() :  "";
+    }
+
+    const data = {
+        nama: localStorage.getItem("nama"),
+        umur: localStorage.getItem("umur"),
+        klub: localStorage.getItem("klub"),
+        pilihan1: ambilJawaban('pilihan1'),
+        pilihan2: ambilJawaban("pilihan2"),
+        pilihan3: ambilJawaban("pilihan3"),
+        pilihan4: ambilJawaban("pilihan4"),
+        pilihan5: ambilJawaban("pilihan5"),
+        pilihan6: document.querySelector("textarea").value,
+        pilihan7: ambilJawaban("pilihan7"),
+        pilihan8: ambilJawaban("pilihan8"),
+        pilihan9: ambilJawaban("pilihan9"),
+        pilihan10: ambilJawaban("pilihan10")
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbxX_2eyPECA7SD8XV-RHge6K-9F2v0Ua5AJPtrvWUIPhuF7AEyOtNtH1htmNrq7Nw6iyQ/exec")
+  .then(res => res.text())
+  .then(res => {
+    alert("Jawaban berhasil dikirim!");
+    localStorage.clear(); // Hapus data agar tidak dobel kalau submit lagi
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Gagal mengirim!");
+  });
+});
