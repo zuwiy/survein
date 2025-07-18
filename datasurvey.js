@@ -24,7 +24,7 @@ submit.addEventListener('click', function(e){
         pilihan10: ambilJawaban("pilihan10")
     };
 
-    fetch('https://script.google.com/macros/s/AKfycbwX.../exec', {
+    fetch('https://script.google.com/macros/s/AKfycbxX_2eyPECA7SD8XV-RHge6K-9F2v0Ua5AJPtrvWUIPhuF7AEyOtNtH1htmNrq7Nw6iyQ/exec', {
   method: 'POST',
   body: JSON.stringify({ name: 'Zuwiy' }),
   headers: {
